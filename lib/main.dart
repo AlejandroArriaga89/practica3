@@ -3,7 +3,6 @@ import 'package:practica3/assets/global_values.dart';
 import 'package:practica3/assets/styles_app.dart';
 import 'package:practica3/routes.dart';
 import 'package:practica3/screens/shopping_screen.dart';
-import 'image_carousel.dart';
 
 void main() {
   runApp(const MyApp());
