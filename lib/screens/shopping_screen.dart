@@ -26,7 +26,7 @@ class _FirstScreen extends State<FirstScreen> {
     return MaterialApp(
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Inicio',
@@ -40,17 +40,20 @@ class _FirstScreen extends State<FirstScreen> {
               label: 'Configuracion',
             ),
           ],
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          selectedItemColor: Theme.of(context).colorScheme.secondary,
+          unselectedItemColor: Theme.of(context).colorScheme.onSurface,
         ),
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.white70,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           leading: Row(
             children: <Widget>[
               const SizedBox(
                 width: 5.0,
               ),
               IconButton(
-                color: Colors.black87,
+                color: Theme.of(context).colorScheme.onSurface,
                 icon: const Icon(
                   Icons.arrow_back,
                 ),
@@ -76,6 +79,7 @@ class _FirstScreen extends State<FirstScreen> {
             ),
           ),
         ),
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: ListView(
           children: <Widget>[
             Column(
@@ -91,8 +95,10 @@ class _FirstScreen extends State<FirstScreen> {
                   height: 50.0,
                 ),
                 Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
+                  decoration: BoxDecoration(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .surface, // Usar el color de fondo del tema
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50.0),
                         topRight: Radius.circular(50.0),
@@ -109,7 +115,7 @@ class _FirstScreen extends State<FirstScreen> {
                           const SizedBox(
                             height: 20.0,
                           ),
-                          const Row(
+                          Row(
                             children: [
                               Icon(
                                 Icons.star,
@@ -135,11 +141,16 @@ class _FirstScreen extends State<FirstScreen> {
                           ),
                           Row(
                             children: [
-                              const Text(
+                              Text(
                                 'Honda Civic 2017', // Cambiar el nombre del producto
                                 style: TextStyle(
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold),
+                                  fontSize: 30.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onBackground,
+                                  // Usar el color primario del tema
+                                ),
                               ),
                               const SizedBox(
                                 height: 10.0,
@@ -150,11 +161,11 @@ class _FirstScreen extends State<FirstScreen> {
                                 icon: _isFavorited
                                     ? const Icon(
                                         Icons.favorite_border,
-                                        color: Colors.black45,
+                                        color: Colors.black45, // Color estático
                                       )
                                     : const Icon(
                                         Icons.favorite,
-                                        color: Colors.red,
+                                        color: Colors.red, // Color estático
                                       ),
                                 onPressed: _toggleFavorite,
                               ),
@@ -165,6 +176,9 @@ class _FirstScreen extends State<FirstScreen> {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20.00,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .secondary, // Usar el color de acento del tema
                             ),
                           ),
                           SizedBox(
@@ -180,7 +194,13 @@ class _FirstScreen extends State<FirstScreen> {
                           Text(
                             'Descripción del auto',
                             style: TextStyle(
-                                fontSize: 20.0, fontWeight: FontWeight.bold),
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  ?.color, // Usar el color de texto del tema
+                            ),
                           ),
                           SizedBox(
                             height: 15.0,
@@ -188,7 +208,13 @@ class _FirstScreen extends State<FirstScreen> {
                           Text(
                             'El Honda Civic del 2017 es un automóvil compacto conocido por su confiabilidad, eficiencia de combustible y estilo moderno. Ofrece espacio interior generoso, '
                             'tecnología avanzada y una conducción cómoda. Es una opción popular en su categoría.',
-                            style: TextStyle(fontSize: 16.0),
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.color, // Usar el color de texto del tema
+                            ),
                             textAlign: TextAlign.justify,
                           ),
                           SizedBox(
@@ -200,12 +226,16 @@ class _FirstScreen extends State<FirstScreen> {
                           Center(
                             child: ElevatedButton(
                               onPressed: () {},
-                              child: const Text(
+                              child: Text(
                                 'Apartar o agendar visita', // Cambiar el texto del botón
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
                                 ),
+                              ),
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Theme.of(context).colorScheme.secondary),
                               ),
                             ),
                           ),

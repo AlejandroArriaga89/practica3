@@ -3,6 +3,7 @@ import 'package:practica3/assets/global_values.dart';
 import 'package:practica3/assets/styles_app.dart';
 import 'package:practica3/routes.dart';
 import 'package:practica3/screens/shopping_screen.dart';
+import 'package:practica3/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         valueListenable: GlobalValues.flagTheme,
         builder: (context, value, _) {
           return MaterialApp(
-            home: FirstScreen(),
+            home: LoginScreen(),
             routes: getRoutes(),
             theme: value
                 ? StyleApp.darkTheme(context)
